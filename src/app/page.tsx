@@ -20,9 +20,8 @@ export default function Home() {
 
   // Define the function with proper type
   const addTask = (newTaskTitle: string) => {
-    const newTask = { id: nanoid(), title: newTaskTitle, completed: false };
-    const newTasks:any = [...tasks, newTask];
-    setTasks(newTasks);
+    const newTask: TaskItem = { id: parseInt(nanoid()), title: newTaskTitle, completed: false };
+    setTasks([...tasks, newTask]);
   };
 
   // Define the function with proper type
@@ -33,12 +32,9 @@ export default function Home() {
 
   // Define the function with proper type
   const toggleDoneTask = (taskId: number) => {
-    //structuredClone will copy an array or an object "deeply"
-    //So objects within an object will be copied too
-    const newTasks = structuredClone(tasks);
-    //search for a task based on condition
-    const task: any = newTasks.find((x) => x.id === taskId);
-    task.completed = !task.completed;
+    const newTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, completed: !task.completed } : task
+    );
     setTasks(newTasks);
   };
 
@@ -47,7 +43,7 @@ export default function Home() {
 
   return (
     // Main container
-    <div className="container mx-auto">
+    <div className="container mx-auto p-4">
       {/* header section */}
       <Header />
       {/* tasks container */}
