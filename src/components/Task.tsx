@@ -2,11 +2,11 @@ import React from "react";
 
 // define TaskItem interface to use as props type
 interface TaskItemProps {
-  id: number;
+  id: string; // Change to string
   title: string;
   completed: boolean;
-  deleteTaskFunc: (taskId: number) => void; // callback function
-  toggleDoneTaskFunc: (taskId: number) => void; // callback function
+  deleteTaskFunc: (taskId: string) => void; // Update to string
+  toggleDoneTaskFunc: (taskId: string) => void; // Update to string
 }
 
 export default function Task({
@@ -36,4 +36,5 @@ export default function Task({
     </div>
   );
 }
+
 

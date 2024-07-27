@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props{
-  year: string;
+  year: number;
   fullName: string;
   studentId: string;
 }
